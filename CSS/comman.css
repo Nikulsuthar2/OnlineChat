@@ -1,0 +1,44 @@
+:root{
+    --navbg: #41e198;
+    --mainbg: #ededed;
+    --logocolor: white;
+    --btnprimary: #41e198;
+    --btnprimaryhover:#2fac73;
+    --btnsec: royalblue;
+    --btnsechover: rgb(30, 52, 121);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar{
+    background-color: var(--navbg);
+    /*box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.16);*/
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 20px;
+    align-items: center;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.applogo{
+    color: var(--logocolor);
+    font-weight: bold;
+}
+
+.adminbtn{
+    color: #333;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+}
+.adminbtn:hover{
+    background-color: lightgray;
+}

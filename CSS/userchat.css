@@ -1,0 +1,115 @@
+.chataccbox{
+    padding: 0;
+}
+
+.header{
+    height: 40px;
+    padding: 5px;
+    margin: 0;
+}
+.backbtn{
+	text-decoration:none;
+}
+.accname{
+    font-size: 16px;
+}
+
+.accstatus{
+    font-size: 12px;
+}
+
+.chat-container{
+    height: 400px;
+    overflow: auto;
+    background-color: #ffe7b4;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+}
+
+.user-text{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.user-text-bubble{
+    padding: 5px 10px;
+    margin: 10px;
+    max-width: 200px;
+    border-radius: 10px 10px 10px 0px;
+    background-color: white;
+    /*box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.171);*/
+    position: relative;
+    word-wrap: break-word;
+}
+
+.user-text-bubble::after{
+    content: '';
+    display: block;
+    position: absolute;
+
+    left: 0;
+    top: 95%;
+    width: 20px;
+    height: 10px;
+
+    background-color: inherit;
+
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.msgtime{
+    font-size: 10px;
+    text-align: end;
+}
+
+.own-text{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.own-text-bubble{
+    padding: 5px 10px;
+    margin: 10px;
+    max-width: 200px;
+    border-radius: 10px 10px 0px 10px;
+    background-color: paleturquoise;
+    position: relative;
+    word-wrap: break-word;
+}
+.own-text-bubble::after{
+    content: '';
+    display: block;
+    position: absolute;
+
+    right: 0;
+    top: 95%;
+    width: 20px;
+    height: 10px;
+
+    background-color: inherit;
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.chat-send-box{
+    padding-inline: 10px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    align-items: center;
+}
+
+#txtMsg{
+    height: 30px;
+    width: 100%;
+    padding-inline: 10px;
+    border-radius: 5px;
+    border: 1px solid #777;
+}
+
+#btnSend{
+    height: 30px;
+}

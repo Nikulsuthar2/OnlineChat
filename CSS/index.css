@@ -1,0 +1,31 @@
+.main-body{
+    background-color: var(--mainbg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    gap: 30px;
+}
+
+h1{
+    text-align: center;
+    font-size: 50px;
+    cursor: default;
+}
+
+.loginbtn, .getstartbtn{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: var(--btnprimary);
+    transition: all 0.3s ease;
+}
+
+.loginbtn:hover, .getstartbtn:hover{
+    border-radius: 15px;
+    background-color: var(--btnprimaryhover);
+}

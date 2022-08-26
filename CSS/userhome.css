@@ -1,0 +1,176 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--mainbg);
+}
+
+.chataccbox{
+    min-width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.16);
+    padding: 10px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profileimg{
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.accdtlbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.accnamebox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.accname{
+    font-size: 18px;
+    font-weight: 500;
+}
+.accstatus{
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.logoutbtn,.editprobtn{
+    text-decoration: none;
+    color: white;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: var(--btnprimary);
+}
+
+.logoutbtn:hover{
+    background-color: var(--btnprimaryhover);
+}
+
+.editprobtn{
+	background-color:red;
+}
+.searchbtncontainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.searchbtn{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 30px;
+    background-color: #00ff3240;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.searchbtn:hover{
+    border-radius: 10px;
+    background-color: #00ff3377;
+}
+
+.chataccbtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    margin: 10px 0px;
+}
+.chataccbtn:hover{
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.notibadge{
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+
+.acclastmsg{
+	width: 250px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.inputsection,.profilesection{
+    margin-top: 10px;
+    display: flex;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+}
+.profilesection{
+    flex-direction: column;
+    align-items: center;
+}
+
+.profilesection .profileimg{
+    cursor: pointer;
+}
+
+.inputbox{
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 5px;
+    outline: none;
+    height: 30px;
+    font-size: 16px;
+    padding-inline: 10px;
+}
+
+.inputbox:focus{
+    border: 1px solid var(--btnprimary);
+}
+
+.primarybtn{
+    color: white;
+    /*text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);*/
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    width: 100%;
+    background-color: var(--btnprimary);
+}
+
+.primarybtn:hover{
+    background-color: var(--btnprimaryhover);
+}
+
+.primarybtn:disabled{
+    background-color: gray;
+}
