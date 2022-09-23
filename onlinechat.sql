@@ -40,8 +40,6 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`adminid`, `name`, `email`, `password`) VALUES
 (1, 'admin', 'admin@admin.com', 'admin'),
-(2, 'nikul', 'nik@admin.com', 'nikadmin'),
-(3, 'abc', 'abc@admin.com', 'abcadmin');
 
 -- --------------------------------------------------------
 
@@ -65,30 +63,6 @@ CREATE TABLE `message` (
 
 INSERT INTO `message` (`msgid`, `sender_id`, `receiver_id`, `message`, `date`, `time`, `msg_status`) VALUES
 (9, 9, 10, 'hi', '2022-09-04', '11:34 AM', 'seen'),
-(10, 9, 10, 'hello', '2022-09-04', '11:35 AM', 'seen'),
-(11, 9, 7, 'hi', '2022-09-04', '11:36 AM', 'unseen'),
-(12, 9, 7, 'xyz', '2022-09-04', '11:36 AM', 'unseen'),
-(13, 10, 9, 'hi', '2022-09-04', '12:09 PM', 'seen'),
-(14, 10, 9, 'fhfdfhjdhnbtynebjbd  rtyt y   yu u u u yt yt uyuyyuyruyubyubyubybybhgjv', '2022-09-04', '12:10 PM', 'seen'),
-(15, 9, 10, 'what', '2022-09-04', '12:10 PM', 'seen'),
-(16, 10, 6, 'hi', '2022-09-04', '12:39 PM', 'seen'),
-(17, 9, 6, 'hi', '2022-09-04', '12:40 PM', 'seen'),
-(18, 8, 9, 'hi', '2022-09-04', '12:43 PM', 'seen'),
-(19, 9, 8, 'hi', '2022-09-04', '12:46 PM', 'unseen'),
-(20, 9, 6, 'hi', '2022-09-23', '02:11 PM', 'seen'),
-(21, 9, 6, 'hello', '2022-09-23', '02:12 PM', 'seen'),
-(22, 6, 9, 'hi', '2022-09-23', '02:12 PM', 'seen'),
-(23, 6, 9, 'hii', '2022-09-23', '02:14 PM', 'seen'),
-(24, 9, 6, 'hello', '2022-09-23', '02:14 PM', 'seen'),
-(25, 6, 9, 'hii', '2022-09-23', '02:14 PM', 'seen'),
-(26, 9, 6, 'hello how are you', '2022-09-23', '02:17 PM', 'seen'),
-(27, 9, 6, 'hello hi', '2022-09-23', '02:19 PM', 'seen'),
-(28, 6, 9, 'hi whatsup', '2022-09-23', '02:19 PM', 'seen'),
-(29, 9, 6, 'hi how are you', '2022-09-23', '02:23 PM', 'seen'),
-(30, 6, 9, 'fine.', '2022-09-23', '02:23 PM', 'seen'),
-(31, 9, 6, 'hello', '2022-09-23', '02:35 PM', 'seen'),
-(32, 9, 6, 'hi', '2022-09-23', '02:35 PM', 'seen'),
-(33, 6, 9, 'hi', '2022-09-23', '02:36 PM', 'seen');
 
 -- --------------------------------------------------------
 
@@ -111,10 +85,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`userid`, `name`, `email`, `password`, `image`, `status`) VALUES
 (6, 'abc', 'abc@user.com', 'abcusers', 'image/profileimg/profiledef.png', 'online'),
-(7, 'xyz', 'xyz@user.com', 'xyzusers', 'image/profileimg/profiledef.png', 'offline'),
-(8, 'pqr', 'pqr@user.com', 'pqrusers', 'image/profileimg/profiledef.png', 'offline'),
 (9, 'Nikul', 'nik@user.com', 'nikusers', 'image/profileimg/166228380412577.jpg', 'online'),
-(10, 'Mno', 'mno@user.com', 'mnousers', 'image/profileimg/166227848135453_2d74ca950a3ad2a190efdc53d3d93097.jpg', 'offline');
 
 -- --------------------------------------------------------
 
@@ -135,7 +106,7 @@ CREATE TABLE `userstatus` (
 
 INSERT INTO `userstatus` (`id`, `mainuser`, `otheruser`, `status`) VALUES
 (1, 9, 6, 'null'),
-(2, 6, 9, 'null');
+(2, 6, 9, 'Typing..');
 
 --
 -- Indexes for dumped tables
