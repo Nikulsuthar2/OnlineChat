@@ -1,7 +1,6 @@
 .chataccbox{
     padding: 0;
 }
-
 .header{
     height: 40px;
     padding: 5px;
@@ -13,11 +12,9 @@
 .accname{
     font-size: 16px;
 }
-
 .accstatus{
     font-size: 12px;
 }
-
 .chat-container{
     height: 400px;
     overflow: auto;
@@ -25,24 +22,20 @@
     overflow-x: hidden;
     padding-bottom: 50px;
 }
-
 .user-text{
     width: 100%;
     display: flex;
     justify-content: flex-start;
 }
-
 .user-text-bubble{
     padding: 5px 10px;
     margin: 10px;
     max-width: 200px;
     border-radius: 10px 10px 10px 0px;
     background-color: white;
-    /*box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.171);*/
     position: relative;
     word-wrap: break-word;
 }
-
 .user-text-bubble::after{
     content: '';
     display: block;
@@ -57,18 +50,15 @@
 
     clip-path: polygon(0 0, 100% 0, 0 100%);
 }
-
 .msgtime{
     font-size: 10px;
     text-align: end;
 }
-
 .own-text{
     display: flex;
     width: 100%;
     justify-content: flex-end;
 }
-
 .own-text-bubble{
     padding: 5px 10px;
     margin: 10px;
@@ -92,7 +82,6 @@
 
     clip-path: polygon(0 0, 100% 0, 100% 100%);
 }
-
 .chat-send-box{
     padding-inline: 10px;
     height: 50px;
@@ -101,7 +90,6 @@
     gap: 5px;
     align-items: center;
 }
-
 #txtMsg{
     height: 30px;
     width: 100%;
@@ -109,7 +97,21 @@
     border-radius: 5px;
     border: 1px solid #777;
 }
-
 #btnSend{
     height: 30px;
+}
+.datebox{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+.datetext{
+    background-color:lightsalmon;
+    color: black;
+    padding: 3px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100px;
+    font-size: 15px;
+    font-weight: bold;
 }

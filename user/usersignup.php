@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../CSS/userloginsignup.css">
 </head>
 <body class="main-body">
+    <a id="backuloginbtn" href="../index.html">Back to Index</a>
     <form class="form" action="" method="post" enctype="multipart/form-data">
         <h1 style="text-align: center;">Create Account</h1>
         <div class="inputsec">
@@ -33,10 +34,10 @@
         include 'db.php';
 
         if(isset($_POST['signup'])){
-            $name = mysqli_real_escape_string($con, $_POST['uname']);
-            $email = mysqli_real_escape_string($con, $_POST['uemail']);
-            $password = mysqli_real_escape_string($con, $_POST['pswd']);
-            $cpassword = mysqli_real_escape_string($con, $_POST['cpswd']);
+            $name = trim(mysqli_real_escape_string($con, $_POST['uname']));
+            $email = trim(mysqli_real_escape_string($con, $_POST['uemail']));
+            $password = trim(mysqli_real_escape_string($con, $_POST['pswd']));
+            $cpassword = trim(mysqli_real_escape_string($con, $_POST['cpswd']));
 
             if($password == $cpassword){
                 $sql = "select * from user where email = '$email'";

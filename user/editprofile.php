@@ -32,12 +32,19 @@ else
         <hr>
         <div class="profilesection">
             <label>Profile Image</label>
-            <label for="profile"><img id="proimg" class="profileimg" src="../<?php echo $data['image']?>" width="150px" height="150px"></label>
-            <input id="profile" hidden type="file" accept="image/png,image/jpeg" name="profileimg">
+            <label for="profile">
+                <img id="proimg" class="profileimg" src="../<?php if(isset($data['image'])) echo $data['image']; 
+                else echo "image/profileimg/profiledef.png" ?>" 
+                width="150px" height="150px">
+            </label>
+            <input id="profile" hidden type="file" accept="image/png,image/jpeg" name="profileimg"
+             <?php if(!isset($data['image'])) echo "disabled";?>>
         </div>
         <div class="inputsection">
             <label>Name</label>
-            <input id="txtname" type="text" class="inputbox" name="uname" value="<?php echo $data['name']?>" placeholder="Enter your name" required>
+            <input id="txtname" type="text" class="inputbox" name="uname" 
+            value="<?php if(isset($data['name'])) echo $data['name']; else echo "Unknown User"?>" 
+            placeholder="Enter your name" required <?php if(!isset($data['name'])) echo "disabled";?>>
         </div>
         
         <input id="updtbtn" type="submit" class="primarybtn" name="updatepro" value="Update Profile">
@@ -48,7 +55,7 @@ else
         var updatebtn = document.getElementById("updtbtn");
         updatebtn.disabled = true;
 
-        var name = uname.value;
+        var name = uname.value.trim();
         var imgchange = false;
 
         profile.onchange = () =>{
@@ -58,7 +65,7 @@ else
         }
 
         uname.onkeyup = () =>{
-            if(uname.value != name && uname.value != ""){
+            if(uname.value.trim() != name && uname.value.trim() != ""){
                 updatebtn.disabled = false;
             }
             else{

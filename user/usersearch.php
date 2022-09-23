@@ -61,13 +61,9 @@ else
                         }
                     }
                 }
-                xhr.send("search="+searchbox.value);
+                xhr.send("search="+searchbox.value.trim());
             }
         }
-
-        setInterval(()=>{
-            
-        }, 500);
     </script>
 </body>
 </html>

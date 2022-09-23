@@ -1,0 +1,109 @@
+.nav-menus{
+    display: flex;
+    gap: 30px;
+}
+.nav-action{
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+}
+.nav-action a{
+    text-decoration: none;
+    color: black;
+}
+.nav-action a:hover{
+    color: white;
+    text-shadow: 0 0 6px black;
+}
+.admin-main-body{
+    align-items: flex-start;
+}
+#info-list{
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+.info-card{
+    background-color: var(--btnprimary);
+    padding: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    width: 250px;
+    height: 80px;
+    justify-content: space-between;
+}
+.info-card:hover{
+    background-color: var(--btnprimaryhover);
+}
+.info-card:hover .info-value{
+    color: yellow;
+}
+.info-value{
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+}
+.header,.user-list{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.user-list{
+    margin-top: 20px;
+    width: 80%;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header h1{
+    font-size: 40px;
+    text-align: start;
+}
+.list-topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-weight: bold;
+    background-color: var(--btnprimary);
+}
+table{
+    width: 100%;
+}
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+.removebtn{
+    margin: 5px;
+    border: none;
+    background-color: red;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    transition: all 0.3s ease;
+}
+.removebtn:hover{
+    background-color: black;
+}
+.onbadge,.offbadge{
+    font-weight: bold;
+}
+.onbadge{
+    color: green;
+}
+.offbadge{
+    color: red;
+}
+.profileimg{
+    object-fit: cover;
+    border-radius: 20%;
+    border: 1px solid gray;
+    margin: 5px;
+}

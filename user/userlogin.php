@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../CSS/userloginsignup.css">
 </head>
 <body class="main-body">
+    <a id="backuloginbtn" href="../index.html">Back to Index</a>
     <form class="form" action="" method="post">
         <h1 style="text-align: center;">Login</h1>
         <div class="inputsec">
@@ -18,11 +19,11 @@
         </div>
         <div style="text-align: end;"><a id="forgotpassbtn" href="forgotpassword.php" >Forgot password?</a></div>
         <?php 
-        session_start();
         include 'db.php';
         if(isset($_POST['login'])){
-            $email = mysqli_real_escape_string($con, $_POST['uemail']);
-            $password = mysqli_real_escape_string($con, $_POST['pswd']);
+            session_start();
+            $email = trim(mysqli_real_escape_string($con, $_POST['uemail']));
+            $password = trim(mysqli_real_escape_string($con, $_POST['pswd']));
 
             $sql = "select * from user where email = '$email' and password = '$password'";
             $res = mysqli_query($con, $sql);

@@ -7,7 +7,8 @@ if($_SESSION["uid"]){
     $sql = "select * from user where userid = $uid";
     $res = mysqli_query($con, $sql);
     if($res){
-        $data = mysqli_fetch_assoc($res);
+        if(mysqli_num_rows($res) > 0)
+            $data = mysqli_fetch_assoc($res);
     }
 }
 else
@@ -19,7 +20,7 @@ else
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home - <?php echo $data['name'];?></title>
+    <title>Home - <?php if(isset($data['name'])) echo $data['name'];?></title>
     <link rel="stylesheet" href="../CSS/comman.css">
     <link rel="stylesheet" href="../CSS/userhome.css">
 </head>
@@ -28,10 +29,10 @@ else
         <div class="header">
             <div class="accdtlbox">
                 <input hidden type="text" id="userid" value="<?php echo $_SESSION["uid"];?>">
-                <img class="profileimg" src="../<?php echo $data['image']?>" width="50px" height="50px">
+                <img class="profileimg" src="../<?php if(isset($data['image'])) echo $data['image']; else echo "image/profileimg/profiledef.png";?>" width="50px" height="50px">
                 <div class="accnamebox">
-                    <label class="accname"><?php echo $data['name']?></label>
-                    <label class="accstatus"><?php echo $data['status']?></label>
+                    <label class="accname"><?php if(isset($data['name'])) echo $data['name']; else echo "Unknown User";?></label>
+                    <label class="accstatus"><?php if(isset($data['status'])) echo $data['status']?></label>
                 </div>
             </div>
 			<div>
@@ -61,20 +62,10 @@ else
                 if(xhr.readyState === XMLHttpRequest.DONE){
                     if(xhr.status === 200){
                         let data = xhr.response;
-                        console.log(data);
-                        if(count == 0){
-                            previousdata = data;
-                            if(count == 0 && previousdata == data){
-                                console.log("equal");
-                                chatbody.innerHTML = data;
-                            }
-                            count += 1;
-                            console.log(count);
-                        }
                         if(previousdata != data){
                             console.log("not equal");
-                            previousdata = data;
                             chatbody.innerHTML = data;
+                            previousdata = data;
                         }
                     }
                 }

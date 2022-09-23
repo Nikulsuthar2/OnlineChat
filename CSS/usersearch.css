@@ -1,7 +1,6 @@
 .searchbtncontainer{
     margin-bottom: 10px;
 }
-
 .backbtn{
     text-decoration: none;
     color: white;
@@ -14,7 +13,6 @@
     justify-content: center;
     align-items: center;
 }
-
 .searchbox{
     height: 30px;
     width: 80%;
@@ -22,17 +20,14 @@
     border-radius: 5px;
     border: 1px solid #777;
 }
-
 .searchbtn{
     width: 10%;
 }
-
 .chataccbtn{
     padding: 5px;
     text-decoration: none;
     color: black;
 }
-
 .chataccbtn:hover{
     background-color: lightgray;
     border-radius: 10px;

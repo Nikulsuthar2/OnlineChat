@@ -64,6 +64,22 @@ else
             chatcontainer.scroll({top: chatcontainer.scrollHeight,behavior: "smooth"});
         }, 1500);
 
+        txtmsg.onkeypress = () => {
+            //send status 
+            let xhr1 = new XMLHttpRequest();
+            xhr1.open("POST", "module/sendUserStatus.php" , true);
+            xhr1.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+            xhr1.send("main="+receiverid.value+"&other="+senderid.value+"&status=Typing..");
+
+            //after 2 second
+            setTimeout(() => {
+                let xhr8 = new XMLHttpRequest();
+                xhr8.open("POST", "module/sendUserStatus.php" , true);
+                xhr8.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+                xhr8.send("main="+receiverid.value+"&other="+senderid.value+"&status=null");
+            },2000);
+        }
+
         btnsend.onclick = () =>{
 			//alert("msg="+txtmsg.value+"&sendid="+senderid.value+"&receiveid="+receiverid.value);
             let xhr = new XMLHttpRequest();
@@ -78,23 +94,12 @@ else
                     }
                 }
             }
-            xhr.send("msg="+txtmsg.value+"&sendid="+senderid.value+"&receiveid="+receiverid.value);
+            xhr.send("msg="+txtmsg.value.trim()+"&sendid="+senderid.value+"&receiveid="+receiverid.value);
+            txtmsg.focus();
         }
 
+        var previousMsg = "";
         setInterval(() =>{
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "module/getMsg.php" , true);
-            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
-            xhr.onload = () =>{
-                if(xhr.readyState === XMLHttpRequest.DONE){
-                    if(xhr.status === 200){
-                        let data = xhr.response;
-                        chatcontainer.innerHTML = data;
-                    }
-                }
-            }
-            xhr.send("sendid="+senderid.value+"&receiveid="+receiverid.value);
-
             let xhr1 = new XMLHttpRequest();
             xhr1.open("POST", "module/getUserStatus.php" , true);
             xhr1.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
@@ -103,10 +108,29 @@ else
                     if(xhr1.status === 200){
                         let status = xhr1.response;
                         lblstatus.innerHTML = status;
+                        console.log(status);
                     }
                 }
             }
-            xhr1.send("userid="+receiverid.value);
+            xhr1.send("userid="+receiverid.value+"&senderid="+senderid.value);
+
+            
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "module/getMsg.php" , true);
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+            xhr.onload = () =>{
+                if(xhr.readyState === XMLHttpRequest.DONE){
+                    if(xhr.status === 200){
+                        if(xhr.response != previousMsg){
+                            let data = xhr.response;
+                            chatcontainer.innerHTML = data;
+                            previousMsg = xhr.response;
+                            chatcontainer.scroll({top: chatcontainer.scrollHeight,behavior: "smooth"});
+                        }
+                    }
+                }
+            }
+            xhr.send("sendid="+senderid.value+"&receiveid="+receiverid.value);
 			
 			let xhr2 = new XMLHttpRequest();
             xhr2.open("POST", "module/updateMsgStatus.php" , true);
@@ -114,7 +138,7 @@ else
 			xhr2.onload = () =>{
                 if(xhr2.readyState === XMLHttpRequest.DONE){
                     if(xhr2.status === 200){
-                        console.log(xhr2.response);
+                        //console.log(xhr2.response);
                     }
                 }
             }

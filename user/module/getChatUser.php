@@ -39,21 +39,45 @@ foreach($uniquechatid as $id){
     or (sender_id = $uid and receiver_id = $id) order by msgid desc limit 1";
     $ltsmsgres = mysqli_query($con , $latestmsg);
 
+    $istyping = false;
     if($res){
         $udata = mysqli_fetch_assoc($res);
         $ltsmsg =  mysqli_fetch_assoc($ltsmsgres);
 
-        if($ltsmsg["sender_id"] == $_SESSION["uid"]){
-            $finalmsg = "You: ".$ltsmsg['message'];
+        $statussql = "select * from userstatus where mainuser = $uid and otheruser = $id";
+        $statusresult = mysqli_query($con,$statussql);
+
+        if(mysqli_num_rows($statusresult) > 0){
+            $row = mysqli_fetch_assoc($statusresult);
+            if($row['status'] == "Typing.."){
+                $istyping = true;
+                $finalmsg = "<b style='color:#3aff54;'>".$row['status']."</b>";
+            }
+            else{
+                $istyping = false;
+            }
+        }
+
+        if($istyping == false){
+            if($ltsmsg["sender_id"] == $_SESSION["uid"]){
+                $finalmsg = "You: ".$ltsmsg['message'];
+            }
+            else{
+                $finalmsg = $ltsmsg['message'];
+            }
+        }
+
+        if($udata["status"] == "online"){
+            $status = "<p class='ondot' ></p>";
         }
         else{
-            $finalmsg = $ltsmsg['message'];
+            $status = "<p class='offdot'></p>";
         }
 		$output .=  "<a href='userchat.php?uid=$udata[userid]' class='chataccbtn'>
 		<div class='accdtlbox'>
 			<img class='profileimg' src='../$udata[image]' width='40px' height='40px'>
 			<div class='accnamebox'>
-				<label class='accname'>$udata[name] ($udata[status])</label>
+				<label class='accname'>$udata[name] $status</label>
 				<label class='acclastmsg'>$finalmsg</label>
 			</div>
         </div>";

@@ -15,7 +15,7 @@ if(isset($_POST["updatepro"]))
             $newimgname = time().$img_name;
             if(move_uploaded_file($tmp_name, "../../image/profileimg/".$newimgname))
             {
-                $upsql = "update user set image = 'image/profileimg/$newimgname', name = '$_POST[uname]' where userid = $_SESSION[uid]";
+                $upsql = "update user set image = 'image/profileimg/$newimgname', name = '".trim($_POST["uname"])."' where userid = $_SESSION[uid]";
             }
         }
         else{
@@ -23,7 +23,7 @@ if(isset($_POST["updatepro"]))
         }
     }
     else{
-        $upsql = "update user set name = '$_POST[uname]' where userid = $_SESSION[uid]";
+        $upsql = "update user set name = '".trim($_POST["uname"])."' where userid = $_SESSION[uid]";
     }
     if($upsql != ""){
         $res = mysqli_query($con, $upsql);
