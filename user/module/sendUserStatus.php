@@ -18,8 +18,8 @@ if(isset($_POST['main'])){
     }
     else{
         $insertdata = "insert into userstatus(mainuser,otheruser,status) values($main,$other,'$status')";
-        $inserresult = mysqli_query($con,$insertdata);
-        if($updateresult){
+        $insertresult = mysqli_query($con,$insertdata);
+        if($insertresult){
             echo "status created";
         }
     }

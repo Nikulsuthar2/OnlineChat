@@ -1,11 +1,12 @@
 body{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
     background-color: var(--mainbg);
 }
 .chataccbox{
+    margin-top: 10px;
     min-width: 400px;
     background-color: white;
     border-radius: 10px;
@@ -22,6 +23,26 @@ body{
     object-fit: cover;
     border-radius: 50%;
 }
+
+.profileborder{
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: var(--btnprimary);
+}
+.groupprofileimg{
+    padding: 3px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.owngroup{
+    background: linear-gradient(red,yellow);
+}
+
 .accdtlbox{
     display: flex;
     justify-content: center;
@@ -73,6 +94,25 @@ body{
 }
 .editprobtn{
 	background-color:red;
+}
+
+.user-homebtn{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.homemenubtn{
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 100%;
+    background-color: var(--btnprimary);
 }
 .searchbtncontainer{
     display: flex;

@@ -9,7 +9,6 @@ if(isset($_GET['uid'])){
 }
 
 unset($_SESSION['uid']);
-session_destroy();
 
 header("location: userlogin.php");
 ?>

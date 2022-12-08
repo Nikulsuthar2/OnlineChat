@@ -107,3 +107,31 @@ table,th,td{
     border: 1px solid gray;
     margin: 5px;
 }
+
+.header h1{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.backbtn{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(80, 83, 255);
+    border-radius: 5px;
+    height: 30px;
+    width: 30px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blockcountbtn{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(80, 83, 255);
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}

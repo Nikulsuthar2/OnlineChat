@@ -2,16 +2,70 @@
 session_start();
 include '../db.php';
 
-$senderid = [];
-$recieverid = [];
-
-$uid = $_POST['curruid'];
 $output = "";
 
+if(isset($_POST['curruid'])){
+    $uid = $_POST['curruid'];
 
-$sendersql = "select distinct sender_id from message where receiver_id = $uid order by msgid asc";
-$recieversql = "select distinct receiver_id from message where sender_id = $uid order by msgid asc";
+    $sql = "select * from chatgroup where adminid = $uid";
+    $res = mysqli_query($con, $sql);
+    if($res){
+        if(mysqli_num_rows($res) > 0){
+           while($admindata = mysqli_fetch_assoc($res)){
+                $output .=  "<a href='groupchat.php?gid=$admindata[groupid]' class='chataccbtn'>
+                <div class='accdtlbox'>
+                    <div class='profileborder owngroup'>
+                        <img class='groupprofileimg' src='../$admindata[image]' width='40px' height='40px'>
+                    </div>
+                    <div class='accnamebox'>
+                        <label class='accname'>&#128101 $admindata[groupname]</label>
+                        <label class='acclastmsg'>1 Participants</label>
+                    </div>
+                </div>";
+                $output .= "<div class='notibadge'>0</div>";
+                $output .= "</a>";
+           }
+        }
+    }
 
+    $sql1 = "select * from gparticipants where participantid = $_SESSION[uid]";
+    $res1 = mysqli_query($con, $sql1);
+    if($res1){
+        if(mysqli_num_rows($res1) > 0){
+           while($partidata = mysqli_fetch_assoc($res1)){
+                $groupsql = "select * from chatgroup where groupid = $partidata[groupid]";
+                $groupres = mysqli_query($con,$groupsql);
+                if($groupres){
+                    if(mysqli_num_rows($groupres) > 0){
+                        $lastmsg = "";
+                        $groupdata = mysqli_fetch_assoc($groupres);
+                        $lastmsgsql = "select * from groupmessage where groupid = $groupdata[groupid] order by msgid desc limit 1";
+                        $lastmsgres = mysqli_query($con,$lastmsgsql);
+                        if($lastmsgres){
+                            if(mysqli_num_rows($lastmsgres) > 0){
+                                $lastmsg = mysqli_fetch_assoc($lastmsgres)["message"];
+                            }
+                        }
+                        
+                        $output .=  "<a href='groupchat.php?gid=$groupdata[groupid]' class='chataccbtn'>
+                        <div class='accdtlbox'>
+                            <div class='profileborder'>
+                                <img class='groupprofileimg' src='../$groupdata[image]' width='40px' height='40px'>
+                            </div>
+                                <div class='accnamebox'>
+                                <label class='accname'>&#128101 $groupdata[groupname]</label>
+                                <label class='acclastmsg'>$lastmsg</label>
+                            </div>
+                        </div>";
+                        //$output .= "<div class='notibadge'></div>";
+                        $output .= "</a>";
+                    }
+                }
+           }
+        }
+    }
+}
+/*
 $res1 = mysqli_query($con, $sendersql);
 $res2 = mysqli_query($con, $recieversql);
 
@@ -128,6 +182,6 @@ foreach($uniquechatid as $id){
             $output .= "</a>";
         }
     }
-}
+}*/
 echo $output;
 ?>

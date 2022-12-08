@@ -1,0 +1,133 @@
+.groupheader{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.txtgroup{
+    width: 100%;
+}
+#creategroupbtn{
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    color: white;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: var(--btnprimary);
+}
+
+#creategroupbtn:hover{
+    background-color: var(--btnprimaryhover);
+}
+#creategroupbtn:disabled{
+    background-color: gray;
+}
+
+.main-container{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.add-user-box{
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.16);
+    padding: 10px;
+    width: 200px;
+}
+
+
+.adminaccountchip{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    padding: 10px;
+    background-color: rgb(233, 233, 233);
+    border-radius: 5px;
+}
+
+.adminlebel{
+    padding: 5px;
+    border-radius: 5px;
+    color: black;
+    background-color: #9bf8ce;
+}
+.useraddchip{
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin-top: 10px;
+}
+.userdtlbox{
+    display: flex;
+    gap: 10px;
+}
+
+.useraddbtn,.userdelbtn{
+    padding: 5px;
+    background-color: royalblue;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    text-decoration: none;
+}
+.userdelbtn{
+    background-color: red;
+}
+
+.userdelbtn:hover{
+    background-color: rgb(212, 0, 0);
+}
+.useraddbtn:hover{
+    background-color: blue;
+}
+
+#participent-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-container{
+    border-radius: 10px;
+}
+.chat-send-box{
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+
+#btnSend{
+    background-color: var(--btnprimary);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#btnSend:hover{
+    background-color: var(--btnprimaryhover);
+}
+
+.Participant-user-box{
+    margin-top: 10px;
+    width: 250px;
+    max-height: 400px;
+}
+
+.senderimg{
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 15px;
+    object-fit: cover;
+    
+}

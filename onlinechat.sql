@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2022 at 02:46 PM
+-- Generation Time: Sep 27, 2022 at 11:35 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -40,6 +40,20 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`adminid`, `name`, `email`, `password`) VALUES
 (1, 'admin', 'admin@admin.com', 'admin'),
+(2, 'nikul', 'nik@admin.com', 'nikadmin'),
+(3, 'abc', 'abc@admin.com', 'abcadmin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blockeduser`
+--
+
+CREATE TABLE `blockeduser` (
+  `id` int(11) NOT NULL,
+  `blockedby` int(11) NOT NULL,
+  `blocked` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -54,15 +68,22 @@ CREATE TABLE `message` (
   `message` text NOT NULL,
   `date` date NOT NULL,
   `time` varchar(20) NOT NULL,
-  `msg_status` varchar(10) NOT NULL DEFAULT 'unseen'
+  `msg_status` varchar(10) NOT NULL DEFAULT 'unseen',
+  `senderclear` int(11) NOT NULL DEFAULT 0,
+  `receiverclear` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `message`
 --
 
-INSERT INTO `message` (`msgid`, `sender_id`, `receiver_id`, `message`, `date`, `time`, `msg_status`) VALUES
-(9, 9, 10, 'hi', '2022-09-04', '11:34 AM', 'seen'),
+INSERT INTO `message` (`msgid`, `sender_id`, `receiver_id`, `message`, `date`, `time`, `msg_status`, `senderclear`, `receiverclear`) VALUES
+(52, 9, 6, 'hi', '2022-09-27', '09:06 AM', 'seen', 0, 1),
+(56, 6, 9, 'hi', '2022-09-27', '11:28 AM', 'unseen', 1, 0),
+(57, 6, 9, 'hi', '2022-09-27', '11:30 AM', 'unseen', 1, 0),
+(58, 6, 9, 'hi', '2022-09-27', '11:31 AM', 'unseen', 1, 0),
+(59, 6, 9, 'hi', '2022-09-27', '03:03 PM', 'unseen', 1, 0),
+(60, 6, 9, 'hi', '2022-09-27', '03:03 PM', 'unseen', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -85,7 +106,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`userid`, `name`, `email`, `password`, `image`, `status`) VALUES
 (6, 'abc', 'abc@user.com', 'abcusers', 'image/profileimg/profiledef.png', 'online'),
-(9, 'Nikul', 'nik@user.com', 'nikusers', 'image/profileimg/166228380412577.jpg', 'online'),
+(7, 'xyz', 'xyz@user.com', 'xyzusers', 'image/profileimg/profiledef.png', 'offline'),
+(8, 'pqr', 'pqr@user.com', 'pqrusers', 'image/profileimg/profiledef.png', 'offline'),
+(9, 'Nikul', 'nik@user.com', 'nikusers', 'image/profileimg/166228380412577.jpg', 'offline'),
+(10, 'Mno', 'mno@user.com', 'mnousers', 'image/profileimg/166227848135453_2d74ca950a3ad2a190efdc53d3d93097.jpg', 'offline');
 
 -- --------------------------------------------------------
 
@@ -106,7 +130,9 @@ CREATE TABLE `userstatus` (
 
 INSERT INTO `userstatus` (`id`, `mainuser`, `otheruser`, `status`) VALUES
 (1, 9, 6, 'null'),
-(2, 6, 9, 'Typing..');
+(2, 6, 9, 'null'),
+(3, 10, 6, 'null'),
+(4, 6, 10, 'null');
 
 --
 -- Indexes for dumped tables
@@ -117,6 +143,12 @@ INSERT INTO `userstatus` (`id`, `mainuser`, `otheruser`, `status`) VALUES
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`adminid`);
+
+--
+-- Indexes for table `blockeduser`
+--
+ALTER TABLE `blockeduser`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `message`
@@ -147,10 +179,16 @@ ALTER TABLE `admin`
   MODIFY `adminid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `blockeduser`
+--
+ALTER TABLE `blockeduser`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `msgid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `msgid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -162,7 +200,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `userstatus`
 --
 ALTER TABLE `userstatus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,6 +3,7 @@ session_start();
 include 'db.php';
 
 $totalrec = 0;
+$headtitle = "Users";
 if($_SESSION["aid"]){
     $aid = $_SESSION["aid"];
     $sql = "select * from admin where adminid = $aid";
@@ -12,6 +13,7 @@ if($_SESSION["aid"]){
     }
 
     if(isset($_GET['user'])){
+        $headtitle = "Users";
         $user = $_GET['user'];
         if($user == "Active")
             $usql = "select * from user where status = 'online'";
@@ -19,6 +21,11 @@ if($_SESSION["aid"]){
             $usql = "select * from user where status = 'offline'";
         else
             $usql = "select * from user";         
+    }
+    elseif(isset($_GET['blockedby'])){
+        $headtitle = "<a style='text-decoration:none;' class='backbtn' 
+        href='userlist.php'>&#11013</a> Blocked by ".$_GET['name'];
+        $usql = "select * from user a, blockeduser b where a.userid = b.blocked and b.blockedby = $_GET[blockedby]";
     }
     else
         $usql = "select * from user"; 
@@ -43,7 +50,7 @@ else
     <?php include 'adminnavbar.php';?>
     <div class="admin-main-body">
         <div class="header">
-            <h1>Users</h1>
+            <h1><?php echo $headtitle;?></h1>
         </div>
         <div class="user-list">
             <div class="list-topbar">
@@ -64,12 +71,20 @@ else
                         <th width="20%">Name</th>
                         <th width="30%">Email Address</th>
                         <th width="10%">Account Status</th>
+                        <th width="10%">Total Blocked Users</th>
                         <th width="10%">Action</th>
                     </tr>
                     <?php
                     $count = 0;
                     if($ures){
                         while($udata = mysqli_fetch_assoc($ures)){
+                            $totalblocked = 0;
+                            $busql = "select * from blockeduser where blockedby = $udata[userid]";
+                            $bures = mysqli_query($con,$busql);
+                            if($bures){
+                                $totalblocked = mysqli_num_rows($bures);
+                            }
+
                             $count++;
                             if($udata["status"] == "online"){
                                 $ustatus = "<div class='onbadge'>Active</div>";
@@ -84,6 +99,10 @@ else
                                 <td>$udata[name]</td>
                                 <td>$udata[email]</td>
                                 <td>$ustatus</td>
+                                <td>";
+                            if($totalblocked > 0)  echo "<a class='blockcountbtn' href='?blockedby=$udata[userid]&name=$udata[name]'>$totalblocked</a>";
+                            else echo $totalblocked;
+                            echo "</td>
                                 <td><input class='removebtn' type='button' value='remove' onclick='userDelete(\"delid=$udata[userid]\")'></td>
                             </tr>";
                         }

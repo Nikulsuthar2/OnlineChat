@@ -16,16 +16,35 @@ if(isset($_POST['search'])){
 				if(mysqli_num_rows($res) == 1)
 					echo $nouser;
 			}
-			else
-			echo "<a href='userchat.php?uid=$data[userid]' class='chataccbtn'>
-				<div class='accdtlbox'>
-					<img class='profileimg' src='../$data[image]' width='40px' height='40px'>
-					<div class='accnamebox'>
-						<label class='accname'>$data[name]</label>
-						<label class='acclastmsg'>$data[status]</label>
+			else{
+				$blockbtnstatus = "select * from blockeduser where blockedby = $data[userid] and blocked = $_SESSION[uid]";
+				$blockbtnres = mysqli_query($con, $blockbtnstatus);
+				if($blockbtnres){
+					if(mysqli_num_rows($blockbtnres) > 0){
+						$blocked = true;
+					}
+					else{
+						$blocked = false;
+					}
+				}
+				else{
+					$blocked = false;
+				}
+				echo "<a href='userchat.php?uid=$data[userid]' class='chataccbtn'>
+					<div class='accdtlbox'>
+						<img class='profileimg' src='../";
+				if(!$blocked)
+					echo $data["image"];
+				else
+					echo "image/profileimg/profiledef.png";
+				echo"' width='40px' height='40px'>
+						<div class='accnamebox'>
+							<label class='accname'>$data[name]</label>
+							<label class='acclastmsg'>$data[status]</label>
+						</div>
 					</div>
-				</div>
-			</a>";
+				</a>";
+			}
 		}
 	}
 	else{

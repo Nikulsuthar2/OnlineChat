@@ -55,6 +55,9 @@ else
                     </tr>
                     <?php
                     $count = 0;
+                    $totchats = 0;
+                    $totsentmsg = 0;
+                    $totreceivemsg = 0;
                     if($ures){
                         while($udata = mysqli_fetch_assoc($ures)){
                             $count++;
@@ -91,7 +94,17 @@ else
                                 <td>$totalsentmsg</td>
                                 <td>$totalreceivemsg</td>
                             </tr>";
+
+                            $totchats += $totalchats;
+                            $totsentmsg += $totalsentmsg;
+                            $totreceivemsg += $totalreceivemsg;
                         }
+                        echo "<tr>
+                                <td colspan='4'><b>Total</b></td>
+                                <td><b>$totchats</b></td>
+                                <td><b>$totsentmsg</b></td>
+                                <td><b>$totreceivemsg</b></td>
+                            </tr>";
                     }
                     ?>
                 </table>
@@ -99,27 +112,6 @@ else
         </div>
     </div>
     <script>
-        function userDelete(delUrl){
-            if(confirm("Are you sure you want to delete")){
-                let xhr = new XMLHttpRequest();
-                xhr.open('POST','deleteUser.php',true);
-                xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
-                xhr.onload = () => {
-                    if(xhr.readyState === XMLHttpRequest.DONE){
-                        if(xhr.status === 200){
-                            if(xhr.response == "sucess"){
-                                alert("User Deleted Sucessfully");
-                                document.location = 'userlist.php';
-                            }
-                            else{
-                                alert("User not Deleted" + xhr.response);
-                            }
-                        }
-                    }
-                }
-                xhr.send(delUrl);
-            }
-        }
         function printReport(id,title,pdfname){
             var control = document.getElementById(id).innerHTML;
             var a = window.open('','','height=900, width=900');
