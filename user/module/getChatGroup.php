@@ -19,10 +19,10 @@ if(isset($_POST['curruid'])){
                     </div>
                     <div class='accnamebox'>
                         <label class='accname'>&#128101 $admindata[groupname]</label>
-                        <label class='acclastmsg'>1 Participants</label>
+                        <!--<label class='acclastmsg'>1 Participants</label>-->
                     </div>
                 </div>";
-                $output .= "<div class='notibadge'>0</div>";
+                // $output .= "<div class='notibadge'>0</div>";
                 $output .= "</a>";
            }
         }
