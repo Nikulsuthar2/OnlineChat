@@ -86,24 +86,24 @@ A real-time online chatting system developed in PHP and MySQL. Real-time functio
 ---
 ## Screenshots
 
-![index]()
+![index](https://github.com/Nikulsuthar2/OnlineChat/blob/main/Screenshot/index.png?raw=true)
 
-![signup]()
+![signup](https://github.com/Nikulsuthar2/OnlineChat/blob/main/Screenshot/usersignup.png?raw=true)
 
-![login]()
+![login](https://github.com/Nikulsuthar2/OnlineChat/blob/main/Screenshot/userlogin.png?raw=true)
 
-![home]()
+![home](https://github.com/Nikulsuthar2/OnlineChat/blob/main/Screenshot/user%20home.png?raw=true)
 
-![profile]()
+![profile](https://github.com/Nikulsuthar2/OnlineChat/blob/main/Screenshot/editProfile.png?raw=true)
 
-![chat]()
+![chat](https://github.com/Nikulsuthar2/OnlineChat/blob/main/Screenshot/user%20chat.png?raw=true)
 
-![search]()
+![search](https://github.com/Nikulsuthar2/OnlineChat/blob/main/Screenshot/usersearch.png?raw=true)
 
-![block]()
+![block](https://github.com/Nikulsuthar2/OnlineChat/blob/main/Screenshot/blockuser.png?raw=true)
 
-![index]()
+![dashboard](https://github.com/Nikulsuthar2/OnlineChat/blob/main/Screenshot/admin%20dashboard.png?raw=true)
 
-![index]()
+![userlist](https://github.com/Nikulsuthar2/OnlineChat/blob/main/Screenshot/admin%20user%20list.png?raw=true)
 
-![index]()
+![chatreport](https://github.com/Nikulsuthar2/OnlineChat/blob/main/Screenshot/admin%20chat%20report.png?raw=true)
